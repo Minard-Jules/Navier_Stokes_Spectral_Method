@@ -1,0 +1,24 @@
+name = "Navier_Stokes_Spectral_Method"
+version = "0.1.0"
+license = "license"
+author = "Jules Minard"
+maintainer = "minard.jules@yahoo.com"
+copyright = "Copyright 2023, Jules Minard"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+
+[install]
+library = false
+
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
+[dependencies]
+gtk-fortran = { git = "https://github.com/vmagnin/gtk-fortran.git", branch = "gtk4" }
+NAFPack = {git = "https://github.com/Minard-Jules/NAFPack.git"}
