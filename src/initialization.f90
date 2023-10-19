@@ -53,18 +53,17 @@ MODULE initialization
 
     END FUNCTION getcolor
 
-    FUNCTION om_init(x, y, width, height, om) RESULT(om_result)
+    FUNCTION om_init(x, y, width, height, om, A, sigma) RESULT(om_result)
         INTEGER, INTENT(IN) :: width, height,x,y
         REAL(dp), DIMENSION(:, :), INTENT(IN) :: om
+        REAL(dp), INTENT(IN) :: A, sigma
         REAL(dp), DIMENSION(height, width) :: om_result
         REAL(dp), DIMENSION(width) :: x_list
         REAL(dp), DIMENSION(height) :: y_list
         REAL(dp), DIMENSION(height, width) :: X_mesh, Y_mesh, om_tmp, om_tmp2
-        REAL(dp) :: A, sigma, varx, vary, tolerate
+        REAL(dp) :: varx, vary, tolerate
         INTEGER :: i, j, ind_x, ind_y
 
-        A = 0.5d0
-        sigma = 0.1d0
         tolerate = 10 * sigma
 
         varx = 2 * pi * x / width
