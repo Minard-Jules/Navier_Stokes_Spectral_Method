@@ -20,5 +20,6 @@ implicit-external = false
 source-form = "free"
 
 [dependencies]
-gtk-fortran = { git = "https://github.com/vmagnin/gtk-fortran.git", branch = "gtk4" }
+gtk-fortran = { git = "https://github.com/vmagnin/gtk-fortran.git", rev = "v4.6.0" }
 NAFPack = {git = "https://github.com/Minard-Jules/NAFPack.git"}
+openmp = "*"

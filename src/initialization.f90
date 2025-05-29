@@ -2,61 +2,17 @@ MODULE initialization
 
     USE NAFPack_constant
     USE NAFPack_meshgrid
-    USE type
+    USE Types_Module
 
     IMPLICIT NONE
 
     CONTAINS
 
-    FUNCTION getcolor(v,vmin,vmax) RESULT(color)
-
-        REAL(dp), DIMENSION(:,:), INTENT(IN) :: v
-        REAL(dp), INTENT(IN) :: vmin, vmax
-        TYPE(RGB), DIMENSION(SIZE(v, 1), SIZE(v, 2)) :: color
-        REAL(dp), DIMENSION(SIZE(v, 1), SIZE(v, 2)) :: v_tmp
-        REAL(dp) :: dv
-        INTEGER :: i, j, N, M
-
-        v_tmp = v
-
-        N = SIZE(v, 1)
-        M = SIZE(v, 2)
-
-        color = RGB(1.d0, 1.d0, 1.d0)
-
-        DO i=1,N
-            DO j = 1, M
-
-                IF(v_tmp(i,j)<vmin)THEN
-                    v_tmp(i,j)=vmin
-                ELSE IF(v_tmp(i,j)>vmax)THEN
-                    v_tmp(i,j)=vmax
-                END IF
-
-                dv = vmax - vmin
-
-                IF(v_tmp(i,j)<(vmin+0.25*dv))THEN
-                    color(i,j)%r=0.d0
-                    color(i,j)%g=4.d0*(v(i,j)-vmin)/dv
-                ELSE IF (v_tmp(i,j)<(vmin+0.5*dv)) THEN
-                    color(i,j)%r=0.d0
-                    color(i,j)%b=1.d0+4.d0*(vmin+0.25*dv-v(i,j))/dv
-                ELSE IF(v_tmp(i,j)<(vmin + 0.75 * dv))THEN
-                    color(i,j)%r=4.d0 * (v(i,j) - vmin - 0.5 * dv) / dv
-                    color(i,j)%b=0.d0
-                ELSE
-                    color(i,j)%g=1.d0+4.d0*(vmin+0.75*dv-v(i,j))/dv
-                    color(i,j)%b=0.d0
-                END IF
-            END DO
-        END DO
-
-    END FUNCTION getcolor
-
-    FUNCTION om_init(x, y, width, height, om, A, sigma) RESULT(om_result)
+    ! Initialization of the vortex
+    FUNCTION om_init_vortex(x, y, width, height, om, signe, r0) RESULT(om_result)
         INTEGER, INTENT(IN) :: width, height,x,y
         REAL(dp), DIMENSION(:, :), INTENT(IN) :: om
-        REAL(dp), INTENT(IN) :: A, sigma
+        REAL(dp), INTENT(IN) :: signe, r0
         REAL(dp), DIMENSION(height, width) :: om_result
         REAL(dp), DIMENSION(width) :: x_list
         REAL(dp), DIMENSION(height) :: y_list
@@ -64,16 +20,16 @@ MODULE initialization
         REAL(dp) :: varx, vary, tolerate
         INTEGER :: i, j, ind_x, ind_y
 
-        tolerate = 10 * sigma
+        tolerate = 10*r0
 
-        varx = 2 * pi * x / width
-        vary = 2 * pi * y / height
+        varx = 1. * x / width
+        vary = 1. * y / height
 
-        x_list = [(i, i = 0, width-1)] * 2 * pi / width
-        y_list = [(i, i = 0, height-1)] * 2 * pi / height
+        x_list = [(i, i = 0, width-1)] * 1. / width
+        y_list = [(i, i = 0, height-1)] * 1. / height
 
         IF(varx <= tolerate .OR. vary <= tolerate .OR. &
-           2 * pi - varx <= tolerate .OR. 2 * pi - vary <= tolerate)THEN
+           1. - varx <= tolerate .OR. 1. - vary <= tolerate)THEN
 
             IF(x<width/2)THEN
                 ind_x=INT(width/2-x)
@@ -88,8 +44,8 @@ MODULE initialization
 
             DO i = 1, height
                 DO j = 1, width
-                    om_tmp(i, j) = A * EXP(-((x_list(j) - x_list(width-1)/2)**2/(2*sigma) + &
-                                                            (y_list(i) - y_list(height-1)/2)**2/(2*sigma)))
+                    om_tmp(i, j) = signe * EXP(-4 * pi**2 * ((x_list(j) - x_list(width-1)/2)**2 + &
+                                                              (y_list(i) - y_list(height-1)/2)**2)/r0**2)
                 END DO
             END DO
             om_tmp2(:, :width - ind_x) = om_tmp(:, ind_x+1:)
@@ -99,10 +55,84 @@ MODULE initialization
             om_result = om + om_tmp
         ELSE
             CALL meshgrid(x_list, y_list, X_mesh, Y_mesh)
-            om_result = om + A * EXP(-((X_mesh - varx)**2/(2*sigma) + (Y_mesh - vary)**2/(2*sigma)))
+            om_result = om + signe * EXP(-4 * pi**2 * ((X_mesh - varx)**2 + (Y_mesh - vary)**2)/r0**2)
         END IF
 
-    END FUNCTION om_init
+    END FUNCTION om_init_vortex
+
+    ! Initialization of the Kelvin-Helmholtz shear layer
+    FUNCTION om_init_KH(width, height, om, shear_layer_thickness, disturbance, eps, A, k) RESULT(om_result)
+        REAL(dp), INTENT(IN) :: shear_layer_thickness
+        INTEGER, INTENT(IN) :: width, height
+        REAL(dp), DIMENSION(:, :), INTENT(IN) :: om
+        CHARACTER(LEN=*), OPTIONAL, INTENT(IN) :: disturbance
+        REAL(dp), OPTIONAL, INTENT(IN) :: eps, A, k
+        REAL(dp), DIMENSION(height, width) :: om_result
+        REAL(dp), DIMENSION(width) :: x_list, random, value_disturbance
+        REAL(dp), DIMENSION(height) :: y_list
+        REAL(dp) :: x, y, d_erf, L
+        INTEGER :: i
+
+        x_list = [(i, i = 0, width-1)] * 1. / width
+        y_list = [(i, i = 0, height-1)] * 1. / height
+        L = 2*pi
+    
+
+            DO i = 1, height
+
+                IF (disturbance=="sinus")THEN
+                    value_disturbance = A * SIN(k * x_list)
+                ELSE IF (disturbance=="random")THEN
+                    CALL RANDOM_NUMBER(random)
+                    value_disturbance = eps*random
+                END IF
+
+                IF (y_list(i) <= 1./2)THEN
+
+                    y = y_list(i) + 1./4
+                    x = (y - 1./2) * L / shear_layer_thickness 
+
+                    d_erf = 2/SQRT(pi) * EXP(-x**2)
+
+                    ! om_result(i,:) = om(i,:) + d_erf * 1/shear_layer_thickness + value_disturbance
+                    om_result(i,:) = om(i,:) + d_erf * L/shear_layer_thickness + value_disturbance
+
+                ELSE IF (y_list(i) >= 1./2)THEN
+
+                    y = y_list(i) - 1./4
+                    x = (y - 1./2) * L / shear_layer_thickness 
+
+                    d_erf = 2/SQRT(pi) * EXP(-x**2)
+
+                    ! om_result(i,:) = om(i,:) - d_erf * 1/shear_layer_thickness + value_disturbance
+                    om_result(i,:) = om(i,:) - d_erf * L/shear_layer_thickness + value_disturbance
+
+                END IF
+
+            END DO
+
+    END FUNCTION om_init_KH
+
+    ! Initialization of the Taylor-Green vortex
+    FUNCTION om_init_Taylor_Green(width, height, eps, k) RESULT(om_result)
+        INTEGER, INTENT(IN) :: width, height
+        REAL(dp), INTENT(IN) :: eps, k
+        REAL(dp), DIMENSION(height, width) :: om_result
+        REAL(dp), DIMENSION(width) :: x_list
+        REAL(dp), DIMENSION(height) :: y_list
+        REAL(dp), DIMENSION(height, width) :: X_mesh, Y_mesh, random
+        INTEGER :: i
+
+        x_list = [(i, i = 0, width-1)] * 2 * pi / width
+        y_list = [(i, i = 0, height-1)] * 2 * pi / height
+
+        CALL meshgrid(x_list, y_list, X_mesh, Y_mesh)
+
+        CALL RANDOM_NUMBER(random)
+
+        om_result = 2 * k * SIN(k*X_mesh) * SIN(k*Y_mesh) + eps * random
+
+    END FUNCTION om_init_Taylor_Green
 
 
 END MODULE initialization

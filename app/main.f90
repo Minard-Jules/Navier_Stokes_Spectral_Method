@@ -1,20 +1,9 @@
 PROGRAM main
-  USE handlers
 
-  IMPLICIT NONE
+    USE GUI_Module, ONLY: initialize_GUI
 
-  TYPE(c_ptr)    :: app
-  INTEGER(c_int) :: status
+    IMPLICIT NONE
 
-  !create a GTK app
-  app = gtk_application_new("gtk-fortran.Navier_stakes_simulation"//c_null_char, &
-                          & G_APPLICATION_FLAGS_NONE)
+    CALL initialize_GUI()
 
-  CALL g_signal_connect(app, "activate"//c_null_char, c_funloc(activate), c_null_ptr)
-
-  !run app
-  status = g_application_run(app, 0_c_int, [c_null_ptr])
-
-  CALL g_object_unref(app)
-
-END PROGRAM
+END PROGRAM main
