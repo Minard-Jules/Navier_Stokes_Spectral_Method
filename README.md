@@ -148,11 +148,18 @@ fpm run
         <h3 style="text-align: center;">Colormap Blue Orange (divergent)</h3>
         <video src="docs/video/2_vortex/vorticity_mag.mp4" width="500" height="500" controls title="Visualisation avec colormap Blue Orange (divergent)"></video>
     </div>
+ </div>
+
+ https://github.com/user-attachments/assets/a47447f4-31ed-460e-a302-e4a0b335e0c5
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">Colormap 'jet'</h3>
         <video src="docs/video/2_vortex/vorticity_mag_jet.mp4" width="500" height="500" controls title="Visualisation avec colormap jet"></video>
     </div>
 </div>
+
+https://github.com/user-attachments/assets/4aed022a-e38d-4b91-830b-e7d64ec779b5
 
 ### Export des résultats
 
