@@ -52,7 +52,7 @@ $$
 $$
 
 <details>
-  <summary>Démonstration</summary>
+<summary>Démonstration</summary>
   
 Pour obtenir la formulation $\omega-\psi$, on procède en plusieurs étapes :
 
@@ -137,10 +137,10 @@ Les variables adimensionnées sont définies par :
 
 $$
 \begin{aligned}
-\tilde{x} &= \frac{1}{L} \, x \\[1em]
-\tilde{y} &= \frac{1}{L} \, y \\[1em]
-\tilde{t} &= \frac{U}{L} \, t \\[1em]
-\tilde{\psi} &= \frac{1}{UL} \, \psi \\[1em]
+\tilde{x} &= \frac{1}{L} \, x \\
+\tilde{y} &= \frac{1}{L} \, y \\
+\tilde{t} &= \frac{U}{L} \, t \\
+\tilde{\psi} &= \frac{1}{UL} \, \psi \\
 \tilde{\omega} &= \frac{L}{U} \, \omega
 \end{aligned}
 $$

@@ -63,9 +63,9 @@ Les variables adimensionnées sont définies par :
 
 $$
 \begin{aligned}
-\tilde{x} &= \frac{1}{L}x \\[1em]
-\tilde{y} &= \frac{1}{L}y \\[1em]
-\tilde{k} &= kL \\[1em]
+\tilde{x} &= \frac{1}{L}x \\
+\tilde{y} &= \frac{1}{L}y \\
+\tilde{k} &= kL \\
 \tilde{\omega} &= \frac{L}{U}\omega
 \end{aligned}
 $$

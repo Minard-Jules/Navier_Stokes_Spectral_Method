@@ -159,23 +159,6 @@ fpm run
 Les résultats sont automatiquement sauvegardés dans le dossier `data/` avec les formats suivants :
 - Fichiers de données (.vtk)
 - Vidéos (.mp4)
-
-<!-- ## Dépannage
-
-### Problèmes courants
-
-1. **Erreur de compilation**
-   - Vérifiez que toutes les dépendances sont installées
-   - Assurez-vous d'utiliser une version compatible de fpm
-
-2. **Problèmes de performance**
-   - Ajustez la résolution spatiale
-   - Vérifiez l'utilisation de la mémoire
-   - Optimisez les paramètres OpenMP
-
-3. **Erreurs d'affichage**
-   - Vérifiez les pilotes graphiques
-   - Assurez-vous que GTK est correctement installé -->
    
 ## Licence
 

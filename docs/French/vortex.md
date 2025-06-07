@@ -61,15 +61,7 @@ On initialise la simulation avec deux tourbillons tournant dans le même sens (c
     </div>
 </div>
 
-[![Voir la vidéo](docs/miniature_video1.png)](https://Minard-Jules.github.io/Navier_Stokes_Spectral_Method/#video_2_vortex_vorticity_mag)
-
-[![Voir la vidéo de la vorticité](../image/KH_scheme.png)](../video/2_vortex/vorticity_mag.mp4)
-
-
-
 https://github.com/user-attachments/assets/a47447f4-31ed-460e-a302-e4a0b335e0c5
-
-
 
 <details>
   <summary>Autres grandeurs physiques</summary>

@@ -77,10 +77,10 @@ On doit adimensionner la condition initiale. Pour cela, on introduit les mêmes 
 Les variables adimensionnées sont définies par :
 $$
 \begin{aligned}
-\tilde{x} &= \frac{1}{L}x \\[1em]
-\tilde{y} &= \frac{1}{L}y \\[1em]
-\tilde{\delta} &= \frac{1}{L}\delta \\[1em]
-\tilde{k} &= kL \\[1em]
+\tilde{x} &= \frac{1}{L}x \\
+\tilde{y} &= \frac{1}{L}y \\
+\tilde{\delta} &= \frac{1}{L}\delta \\
+\tilde{k} &= kL \\
 \tilde{\omega} &= \frac{L}{U}\omega
 \end{aligned}
 $$
