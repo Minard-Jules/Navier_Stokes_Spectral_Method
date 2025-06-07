@@ -9,8 +9,8 @@ Le système est initialisé avec une configuration périodique de tourbillons co
 $$
 \begin{aligned}
     \begin{cases} 
-      u(x,y,0) = U \sin(kx)\cos(ky) \\
-      v(x,y,0) = -U \cos(kx)\sin(ky)
+        u(x,y,0) = U \sin(kx)\cos(ky) \\
+        v(x,y,0) = -U \cos(kx)\sin(ky)
     \end{cases}
 \end{aligned}
 $$
@@ -27,28 +27,28 @@ $$
 $$
 
 <details>
-  <summary>Démonstration</summary>
+    <summary>Démonstration</summary>
 
-  En utilisant la définition de la vorticité en 2D :
+En utilisant la définition de la vorticité en 2D :
 
-  $$
+$$
     \omega = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
-  $$
+$$
 
-  On calcule les dérivées partielles :
-  
-  $$
+On calcule les dérivées partielles :
+
+$$
     \begin{aligned}
     \frac{\partial v}{\partial x} &= kU\sin(kx)\sin(ky) \\
     \frac{\partial u}{\partial y} &= -kU\sin(kx)\sin(ky)
     \end{aligned}
-  $$
+$$
 
-  En combinant ces termes :
+En combinant ces termes :
 
-  $$
+$$
     \omega(x,y,0) = 2kU\sin(kx)\sin(ky)
-  $$
+$$
 
 </details>
 
@@ -92,9 +92,8 @@ où :
 ### Paramètres de simulation
 
 **Paramètres caractéristiques :**
-- Vitesse caractéristique : $U = 1$
 - Intensité de la perturbation : $\epsilon = 0.01$
-- Nombre d'onde : $k = 4$
+- Nombre d'onde : $\tilde{k} = 4$
 - Nombre de Reynolds : $Re = 2000$
 - Durée de simulation : 30 secondes
 
@@ -106,6 +105,11 @@ où :
         <video src="../video/TG_vortex/vorticity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">Vorticité selon z</h3>
         <video src="../video/TG_vortex/vorticity_z.mp4" width="500" height="500" controls>
@@ -113,33 +117,49 @@ où :
     </div>
 </div>
 
-<details>
-  <summary>Autres grandeurs physiques</summary>
 
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+
+<details>
+    <summary>Autres grandeurs physiques</summary>
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">Fonction de courant</h3>
         <video src="../video/TG_vortex/streamfunction.mp4" width="500" height="500" controls>
         </video>
     </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">Magnitude de la vitesse</h3>
         <video src="../video/TG_vortex/velocity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">Vitesse selon x</h3>
         <video src="../video/TG_vortex/velocity_x.mp4" width="500" height="500" controls>
         </video>
     </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">Vitesse selon y</h3>
         <video src="../video/TG_vortex/velocity_y.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
+</div>
+
+
+
 </details>

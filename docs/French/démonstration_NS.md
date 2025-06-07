@@ -119,8 +119,8 @@ D'où le système final :
 $$
 \begin{aligned}
     \begin{cases} 
-      \Delta \psi = - \omega \\
-      \frac{\partial \omega}{\partial t} + \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} -\frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y} = \nu \Delta \omega
+        \Delta \psi = - \omega \\
+        \frac{\partial \omega}{\partial t} + \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} -\frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y} = \nu \Delta \omega
     \end{cases}
 \end{aligned}
 $$

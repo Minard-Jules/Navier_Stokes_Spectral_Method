@@ -26,10 +26,10 @@ Les variables adimensionnées sont définies par :
 
 $$
 \begin{aligned}
-\tilde{r} &= \frac{1}{L}r \\[1em]
-\tilde{r}_0 &= \frac{1}{L}r_0 \\[1em]
-\tilde{r}_c &= \frac{1}{L}r_c \\[1em]
-\tilde{t} &= \frac{U}{L}t \\[1em]
+\tilde{r} &= \frac{1}{L}r \\
+\tilde{r}_0 &= \frac{1}{L}r_0 \\
+\tilde{r}_c &= \frac{1}{L}r_c \\
+\tilde{t} &= \frac{U}{L}t \\
 \tilde{\omega} &= \frac{L}{U}\omega
 \end{aligned}
 $$
@@ -39,8 +39,8 @@ Ainsi, la forme adimensionnée de la condition initiale s'écrit :
 $$
 \begin{aligned}
     \begin{cases} 
-        \tilde{r_c} = \sqrt{4 Re^{-1} \tilde{t} + \tilde{r_0}^2}\\ [0.5em]
-        \large \tilde{\omega} = \pm A  e^{-\large \frac{\tilde{r}^2}{\tilde{r_c}^2}} \\ [1em]
+        \tilde{r_c} = \sqrt{4 Re^{-1} \tilde{t} + \tilde{r_0}^2}\\ 
+        \large \tilde{\omega} = \pm A  e^{-\large \frac{\tilde{r}^2}{\tilde{r_c}^2}} \\
         \tilde{r} = \sqrt{(\tilde{x} - \tilde{x_0})^2+(\tilde{y} - \tilde{y_0})^2}
     \end{cases}
 \end{aligned}
@@ -50,7 +50,7 @@ On définit la vitesse caractéristique comme : $U=\frac{\Gamma}{A \pi \tilde{r_
 
 ### Fusion de deux tourbillons co-rotatifs
 
-On initialise la simulation avec deux tourbillons tournant dans le même sens (co-rotatifs), de même intensité $A=10$ et de même taille $\sigma = 0.1$, séparés d'une distance $2R$ avec $R=1$. La simulation est effectuée sur une durée de $30$ secondes à un nombre de Reynolds de 2000.
+On initialise la simulation avec deux tourbillons tournant dans le même sens (co-rotatifs), de même intensité $A=10$ et de même taille $\sigma = 0.5$, séparés d'une distance de $R=1$. La simulation est effectuée sur une durée de $30$ secondes à un nombre de Reynolds de 2000.
 
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
@@ -64,36 +64,49 @@ On initialise la simulation avec deux tourbillons tournant dans le même sens (c
 https://github.com/user-attachments/assets/a47447f4-31ed-460e-a302-e4a0b335e0c5
 
 <details>
-  <summary>Autres grandeurs physiques</summary>
+    <summary>Autres grandeurs physiques</summary>
 
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">fonction de courant</h3>
         <video src="../video/2_vortex/streamfunction.mp4" width="500" height="500" controls>
         </video>
     </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+https://github.com/user-attachments/assets/430a6f38-e317-4839-a8f2-a588dde32eda
+    
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">magnitude de la vitesse</h3>
         <video src="../video/2_vortex/velocity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+    
+https://github.com/user-attachments/assets/79758aca-336b-4dd8-8c2c-2618eb14fe60
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vitesse selon x</h3>
         <video src="../video/2_vortex/velocity_x.mp4" width="500" height="500" controls>
         </video>
     </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+https://github.com/user-attachments/assets/2e916755-8032-4c22-af19-c86198154f05
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vitesse selon y</h3>
         <video src="../video/2_vortex/velocity_y.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
+</div>
+
+https://github.com/user-attachments/assets/0f2b17e4-d81e-47f2-85f1-0a7414736818
+
 </details>
 
 ### Fusion de trois tourbillons co-rotatifs
@@ -108,8 +121,10 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
     </div>
 </div>
 
+
+
 <details>
-  <summary>Autres grandeurs physiques</summary>
+    <summary>Autres grandeurs physiques</summary>
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -132,18 +147,25 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
 
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
-<div>
-    <h3 style="text-align: center;">vitesse selon x</h3>
-    <video src="../video/3_vortex/velocity_x.mp4" width="500" height="500" controls>
-    </video>
+    <div>
+        <h3 style="text-align: center;">vitesse selon x</h3>
+        <video src="../video/3_vortex/velocity_x.mp4" width="500" height="500" controls>
+        </video>
+    </div>
 </div>
 
-<div>
-    <h3 style="text-align: center;">vitesse selon y</h3>
-    <video src="../video/3_vortex/velocity_y.mp4" width="500" height="500" controls>
-    </video>
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
+    <div>
+        <h3 style="text-align: center;">vitesse selon y</h3>
+        <video src="../video/3_vortex/velocity_y.mp4" width="500" height="500" controls>
+        </video>
+    </div>
 </div>
-</div>
+
+
+
 </details>
 
 ### Dipôle tourbillonnaire
@@ -156,6 +178,11 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
         <video src="../video/vortex_dipole/vorticity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vorticité selon z</h3>
         <video src="../video/vortex_dipole/vorticity_z.mp4" width="500" height="500" controls>
@@ -164,34 +191,48 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
 </div>
 
 <details>
-  <summary>D'autre grandeur</summary>
+    <summary>Autres grandeurs physiques</summary>
 
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">fonction de courant</h3>
         <video src="../video/vortex_dipole/streamfunction.mp4" width="500" height="500" controls>
         </video>
     </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
-    <div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
+    <div>   
         <h3 style="text-align: center;">magnitude de la vitesse</h3>
         <video src="../video/vortex_dipole/velocity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vitesse selon x</h3>
         <video src="../video/vortex_dipole/velocity_x.mp4" width="500" height="500" controls>
         </video>
     </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vitesse selon y</h3>
         <video src="../video/vortex_dipole/velocity_y.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
+</div>
+
+
+
 </details>
 
 ### Collision de deux dipôles tourbillonnaires
@@ -201,43 +242,62 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">magnitude de la vorticité</h3>
-        <video src="../video/vortex_dipole_colision/vorticity_mag.mp4" width="500" height="500" controls>
+        <video src="../video/vortex_dipole_collision/vorticity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vorticité selon z</h3>
-        <video src="../video/vortex_dipole_colision/vorticity_z.mp4" width="500" height="500" controls>
+        <video src="../video/vortex_dipole_collision/vorticity_z.mp4" width="500" height="500" controls>
         </video>
     </div>
 </div>
 
 <details>
-  <summary>D'autre grandeur</summary>
+    <summary>Autres grandeurs physiques</summary>
 
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">fonction de courant</h3>
-        <video src="../video/vortex_dipole_colision/streamfunction.mp4" width="500" height="500" controls>
+        <video src="../video/vortex_dipole_collision/streamfunction.mp4" width="500" height="500" controls>
         </video>
     </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">magnitude de la vitesse</h3>
-        <video src="../video/vortex_dipole_colision/velocity_mag.mp4" width="500" height="500" controls>
+        <video src="../video/vortex_dipole_collision/velocity_mag.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
-  <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vitesse selon x</h3>
-        <video src="../video/vortex_dipole_colision/velocity_x.mp4" width="500" height="500" controls>
+        <video src="../video/vortex_dipole_collision/velocity_x.mp4" width="500" height="500" controls>
         </video>
     </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
         <h3 style="text-align: center;">vitesse selon y</h3>
-        <video src="../video/vortex_dipole_colision/velocity_y.mp4" width="500" height="500" controls>
+        <video src="../video/vortex_dipole_collision/velocity_y.mp4" width="500" height="500" controls>
         </video>
     </div>
-  </div>
+</div>
+
+
+
 </details>
