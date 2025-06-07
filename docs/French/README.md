@@ -4,6 +4,8 @@
 
 Ce projet implémente une simulation numérique des équations de Navier-Stokes 2D dans la formulation $\omega-\psi$ en utilisant la méthode pseudo spectrale. Cette approche permet une résolution efficace des écoulements fluides dans le domaine spectral (espace de Fourier).
 
+FR [En](../../README.md)
+
 ### Caractéristiques principales
 
 - Simulation 2D des équations de Navier-Stokes sous formulation 
