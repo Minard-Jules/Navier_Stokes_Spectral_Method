@@ -38,34 +38,58 @@ $$
 <details>
   <summary>Démonstration</summary>
 
-  On part de la définition de la vorticité en 2D :
+On part de la définition de la vorticité en 2D :
 
-  $$
-    \omega = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
-  $$
+$$
+\omega = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+$$
 
-  Comme $v' << U$, on peut négliger $\frac{\partial v}{\partial x}$. La dérivé de la fonction erreur s'écrit : 
+Comme $v' << U$, on peut négliger $\frac{\partial v}{\partial x}$. La dérivé de la fonction erreur s'écrit : 
 
-  $$
-    \frac{d}{ds} erf(s) = \frac{2}{\sqrt{\pi}} e^{-s^2}
-  $$
+$$
+  \frac{d}{ds} erf(s) = \frac{2}{\sqrt{\pi}} e^{-s^2}
+$$
 
-  En faisant le changement de variable suivant $s=\frac{y}{\delta}$ on peut trouver le champ de vorticité initial :
+En faisant le changement de variable suivant $s=\frac{y}{\delta}$ on peut trouver le champ de vorticité initial :
 
-  $$
-    \begin{aligned}
-    \omega &= - \frac{\partial u}{\partial y} = - U \frac{d}{dy}erf(\frac{y}{\delta}) - \frac{\partial u'}{\partial y}\\
-    &= -\frac{U}{\delta} \frac{d}{ds}erf(s) + \omega'
-    \end{aligned}
-  $$
+$$
+  \begin{aligned}
+  \omega &= - \frac{\partial u}{\partial y} = - U \frac{d}{dy}erf(\frac{y}{\delta}) - \frac{\partial u'}{\partial y}\\
+  &= -\frac{U}{\delta} \frac{d}{ds}erf(s) + \omega'
+  \end{aligned}
+$$
 
-  On obtient donc :
+On obtient donc :
 
-  $$
-    \omega(x,y,0) = -\frac{U}{\delta} \frac{2}{\sqrt{\pi}} e^{-(\frac{y}{\delta})^2} + \omega'(x,y)
-  $$
+$$
+  \omega(x,y,0) = -\frac{U}{\delta} \frac{2}{\sqrt{\pi}} e^{-(\frac{y}{\delta})^2} + \omega'(x,y)
+$$
 
 </details>
+
+### Adimensionnement
+
+On doit adimensionner la condition initiale. Pour cela, on introduit les mêmes grandeurs caractéristiques que pour l'[adimensionnement des équations de Navier-Stokes](./démonstration_NS.md#adimensionnement) :
+
+- $L$ : longueur caractéristique
+- $U$ : vitesse caractéristique
+
+Les variables adimensionnées sont définies par :
+$$
+\begin{aligned}
+\tilde{x} &= \frac{1}{L}x \\[1em]
+\tilde{y} &= \frac{1}{L}y \\[1em]
+\tilde{\delta} &= \frac{1}{L}\delta \\[1em]
+\tilde{k} &= kL \\[1em]
+\tilde{\omega} &= \frac{L}{U}\omega
+\end{aligned}
+$$
+
+Ainsi, la forme adimensionnée de la condition initiale s'écrit : 
+
+$$
+  \tilde{\omega}(\tilde{x},\tilde{y},0) = -\frac{1}{\tilde{\delta}} \frac{2}{\sqrt{\pi}} e^{-(\frac{\tilde{y}}{\tilde{\delta}})^2} + \tilde{\omega'}(\tilde{x},\tilde{y})
+$$
 
 ### Types de perturbations
 
@@ -74,13 +98,12 @@ $$
 La première approche consiste à introduire une perturbation aléatoire dans le système. L'équation de la vorticité initiale devient :
 
 $$
-    \omega(x,y,0) = -\frac{U}{\delta} \frac{2}{\sqrt{\pi}} e^{-(\frac{y}{\delta})^2} + \epsilon \omega'(x,y)
+  \tilde{\omega}(\tilde{x},\tilde{y},0) = -\frac{1}{\tilde{\delta}} \frac{2}{\sqrt{\pi}} e^{-(\frac{\tilde{y}}{\tilde{\delta}})^2} + \epsilon \tilde{\omega'}(\tilde{x},\tilde{y})
 $$
 
 **Paramètres de simulation :**
-- Vitesse caractéristique : $U = 1$
 - Intensité de la perturbation : $\epsilon = 0.01$
-- Épaisseur de cisaillement : $\delta = 0.025$
+- Épaisseur de cisaillement : $\tilde{\delta} = 0.025$
 - Nombre de Reynolds : $Re = 2000$
 - Durée de simulation : 30 secondes
 
@@ -134,12 +157,13 @@ La seconde approche utilise une perturbation sinusoïdale contrôlée. Cette mé
 
 **Paramètres de simulation :**
 - Amplitude : $A = 0.1$
-- Nombre d'onde : $k = 4$
+- Nombre d'onde : $\tilde{k} = 4$
 - Autres paramètres identiques à la simulation précédente
 
 $$
-    \omega(x,y,0) = -\frac{U}{\delta} \frac{2}{\sqrt{\pi}} e^{-(\frac{y}{\delta})^2} + A \sin(k x)
+  \tilde{\omega}(\tilde{x},\tilde{y},0) = -\frac{1}{\tilde{\delta}} \frac{2}{\sqrt{\pi}} e^{-(\frac{\tilde{y}}{\tilde{\delta}})^2} + A \sin(\tilde{k} \tilde{x})
 $$
+
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -184,9 +208,3 @@ $$
     </div>
   </div>
 </details>
-
-### Comparaison des résultats
-
-Les deux types de perturbations mènent à la formation de tourbillons de Kelvin-Helmholtz, mais avec des caractéristiques différentes :
-- La perturbation aléatoire produit des structures plus irrégulières
-- La perturbation sinusoïdale génère des tourbillons plus réguliers et périodiques

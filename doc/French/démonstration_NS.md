@@ -54,76 +54,76 @@ $$
 <details>
   <summary>Démonstration</summary>
   
-  Pour obtenir la formulation $\omega-\psi$, on procède en plusieurs étapes :
+Pour obtenir la formulation $\omega-\psi$, on procède en plusieurs étapes :
 
-  1) D'abord, on remarque que par définition de la fonction de courant, la conservation de la masse est automatiquement satisfaite en 2D :
+1) D'abord, on remarque que par définition de la fonction de courant, la conservation de la masse est automatiquement satisfaite en 2D :
 
-  $$
-  \vec{\nabla} \cdot \vec{v} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = \frac{\partial^2 \psi}{\partial x\partial y} - \frac{\partial^2 \psi}{\partial y\partial x} = 0
-  $$
+$$
+\vec{\nabla} \cdot \vec{v} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = \frac{\partial^2 \psi}{\partial x\partial y} - \frac{\partial^2 \psi}{\partial y\partial x} = 0
+$$
 
-  2) Ensuite, on prend le rotationnel de l'équation de quantité de mouvement :
+2) Ensuite, on prend le rotationnel de l'équation de quantité de mouvement :
 
-  $$
-  \vec{\nabla} \wedge \left(\rho \left[ \frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \vec{\nabla} \vec{v} \right] = -\vec{\nabla} p + \mu \Delta\vec{v} + \rho \vec{f}_V\right)
-  $$
+$$
+\vec{\nabla} \wedge \left(\rho \left[ \frac{\partial \vec{v}}{\partial t} + \vec{v} \cdot \vec{\nabla} \vec{v} \right] = -\vec{\nabla} p + \mu \Delta\vec{v} + \rho \vec{f}_V\right)
+$$
 
-  3) Le terme de pression disparaît car $\vec{\nabla} \wedge \vec{\nabla} p = 0$
+3) Le terme de pression disparaît car $\vec{\nabla} \wedge \vec{\nabla} p = 0$
 
-  4) Pour le membre de gauche, en utilisant la définition de la vorticité :
+4) Pour le membre de gauche, en utilisant la définition de la vorticité :
 
-  $$
-  \rho \frac{\partial \omega}{\partial t} + \rho \vec{\nabla} \wedge (\vec{v} \cdot \vec{\nabla} \vec{v})
-  $$
+$$
+\rho \frac{\partial \omega}{\partial t} + \rho \vec{\nabla} \wedge (\vec{v} \cdot \vec{\nabla} \vec{v})
+$$
 
-  5) Le terme non-linéaire se développe en utilisant les identités vectorielles pour dévelloper $(\vec{v} \cdot \vec{\nabla} \vec{v})$ :
+5) Le terme non-linéaire se développe en utilisant les identités vectorielles pour dévelloper $(\vec{v} \cdot \vec{\nabla} \vec{v})$ :
 
-  $$
-  \vec{\nabla} \wedge (\vec{v} \cdot \vec{\nabla} \vec{v}) = \vec{\nabla} \wedge \left[ \vec{\omega} \wedge \vec{v} + \vec{\nabla} \left( \frac{\lVert \vec{x} \rVert^2}{2} \right) \right] = \vec{\nabla} \wedge ( \vec{\omega} \wedge \vec{v} ) + \vec{\nabla} \wedge \vec{\nabla} \left( \frac{\lVert \vec{x} \rVert^2}{2} \right)
-  $$
+$$
+\vec{\nabla} \wedge (\vec{v} \cdot \vec{\nabla} \vec{v}) = \vec{\nabla} \wedge \left[ \vec{\omega} \wedge \vec{v} + \vec{\nabla} \left( \frac{\lVert \vec{x} \rVert^2}{2} \right) \right] = \vec{\nabla} \wedge ( \vec{\omega} \wedge \vec{v} ) + \vec{\nabla} \wedge \vec{\nabla} \left( \frac{\lVert \vec{x} \rVert^2}{2} \right)
+$$
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Toujours avec les identités vectorielles ce terme devient (le dernier terme est nulle par identité du rotationel)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Toujours avec les identités vectorielles ce terme devient (le dernier terme est nulle par identité du rotationel)
 
-  $$
-  \vec{\nabla} \wedge ( \vec{\omega} \wedge \vec{v} ) = \vec{v} \cdot \vec{\nabla} \vec{\omega} - \vec{\omega} \cdot \vec{\nabla} \vec{v} + \vec{\omega}(\vec{\nabla} \cdot \vec{v}) - \vec{v}(\vec{\nabla} \cdot \vec{\omega})
-  $$
+$$
+\vec{\nabla} \wedge ( \vec{\omega} \wedge \vec{v} ) = \vec{v} \cdot \vec{\nabla} \vec{\omega} - \vec{\omega} \cdot \vec{\nabla} \vec{v} + \vec{\omega}(\vec{\nabla} \cdot \vec{v}) - \vec{v}(\vec{\nabla} \cdot \vec{\omega})
+$$
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Les deux dérnier termes sont nulles par identités du rotationel et car le fluide est incompréssible, le terme non-linéaire devient donc :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Les deux dérnier termes sont nulles par identités du rotationel et car le fluide est incompréssible, le terme non-linéaire devient donc :
 
-  $$
-  \vec{\nabla} \wedge (\vec{v} \cdot \vec{\nabla} \vec{v}) = \vec{v} \cdot \vec{\nabla} \vec{\omega} - \vec{\omega} \cdot \vec{\nabla} \vec{v}
-  $$
+$$
+\vec{\nabla} \wedge (\vec{v} \cdot \vec{\nabla} \vec{v}) = \vec{v} \cdot \vec{\nabla} \vec{\omega} - \vec{\omega} \cdot \vec{\nabla} \vec{v}
+$$
 
-  6) Pour le membre de droite (on supposera que la force volumique est irrotationnel) :
+6) Pour le membre de droite (on supposera que la force volumique est irrotationnel) :
 
-  $$\mu \vec{\nabla} \wedge (\Delta\vec{v}) = \mu \Delta\omega$$
+$$\mu \vec{\nabla} \wedge (\Delta\vec{v}) = \mu \Delta\omega$$
 
-  7) En divisant par $\rho$ et en posant $\nu = \mu/\rho$, on obtient l'équation de transport de la vorticité :
+7) En divisant par $\rho$ et en posant $\nu = \mu/\rho$, on obtient l'équation de transport de la vorticité :
 
-  $$\frac{\partial \vec{\omega}}{\partial t} + \vec{v} \cdot \vec{\nabla} \vec{\omega} = \vec{\omega} \cdot \vec{\nabla} \vec{v} + \nu \Delta \vec{\omega}$$
+$$\frac{\partial \vec{\omega}}{\partial t} + \vec{v} \cdot \vec{\nabla} \vec{\omega} = \vec{\omega} \cdot \vec{\nabla} \vec{v} + \nu \Delta \vec{\omega}$$
 
-  8) Le terme $\vec{\omega} \cdot \vec{\nabla} \vec{v}$ devient nulle en 2D et la seul équation non nulle est celle projeté sur $\vec{e_z}$, l'équation devient donc avec la définition de $\psi$ :
+8) Le terme $\vec{\omega} \cdot \vec{\nabla} \vec{v}$ devient nulle en 2D et la seul équation non nulle est celle projeté sur $\vec{e_z}$, l'équation devient donc avec la définition de $\psi$ :
 
-  $$
-  \frac{\partial \omega}{\partial t} + \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} -\frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y} = \nu \Delta \omega
-  $$
+$$
+\frac{\partial \omega}{\partial t} + \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} -\frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y} = \nu \Delta \omega
+$$
 
-  9) La relation entre $\psi$ et $\omega$ vient directement de la définition de la vorticité :
+9) La relation entre $\psi$ et $\omega$ vient directement de la définition de la vorticité :
 
-  $$\omega = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = -\left(\frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial y^2}\right) = -\Delta \psi$$
+$$\omega = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = -\left(\frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial y^2}\right) = -\Delta \psi$$
 
-  D'où le système final :
+D'où le système final :
 
-  $$
-  \begin{aligned}
-      \begin{cases} 
-        \Delta \psi = - \omega \\
-        \frac{\partial \omega}{\partial t} + \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} -\frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y} = \nu \Delta \omega
-      \end{cases}
-  \end{aligned}
-  $$
+$$
+\begin{aligned}
+    \begin{cases} 
+      \Delta \psi = - \omega \\
+      \frac{\partial \omega}{\partial t} + \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} -\frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y} = \nu \Delta \omega
+    \end{cases}
+\end{aligned}
+$$
 </details>
 
 ## Adimensionnement
@@ -134,6 +134,7 @@ Pour adimensionner ce système, on introduit les grandeurs caractéristiques sui
 - $T = L/U$ : temps caractéristique
 
 Les variables adimensionnées sont définies par :
+
 $$
 \begin{aligned}
 \tilde{x} &= \frac{1}{L} \, x \\[1em]

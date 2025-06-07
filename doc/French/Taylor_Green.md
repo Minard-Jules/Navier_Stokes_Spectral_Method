@@ -23,7 +23,7 @@ où :
 La vorticité initiale correspondante peut être calculée :
 
 $$
-\omega(x,y,0) = -2kU\sin(kx)\sin(ky)
+\omega(x,y,0) = 2kU\sin(kx)\sin(ky)
 $$
 
 <details>
@@ -52,17 +52,42 @@ $$
 
 </details>
 
+### Adimensionnement
+
+On doit adimensionner la condition initiale. Pour cela, on introduit les mêmes grandeurs caractéristiques que pour l'[adimensionnement des équations de Navier-Stokes](./démonstration_NS.md#adimensionnement) :
+
+- $L$ : longueur caractéristique
+- $U$ : vitesse caractéristique
+
+Les variables adimensionnées sont définies par :
+
+$$
+\begin{aligned}
+\tilde{x} &= \frac{1}{L}x \\[1em]
+\tilde{y} &= \frac{1}{L}y \\[1em]
+\tilde{k} &= kL \\[1em]
+\tilde{\omega} &= \frac{L}{U}\omega
+\end{aligned}
+$$
+
+Ainsi, la forme adimensionnée de la condition initiale s'écrit : 
+
+$$
+\tilde{\omega}(\tilde{x},\tilde{y},0) = 2\tilde{k}\sin(\tilde{k}\tilde{x})\sin(\tilde{k}\tilde{y})
+$$
+
 ### Perturbation aléatoire
 
 Pour étudier la transition vers la turbulence, on peut ajouter une perturbation aléatoire à la vorticité initiale :
 
 $$
-    \omega(x,y,0) = 2kU\sin(kx)\sin(ky) + \epsilon \omega'
+\tilde{\omega}(\tilde{x},\tilde{y},0) = 2\tilde{k}\sin(\tilde{k}\tilde{x})\sin(\tilde{k}\tilde{y}) + \epsilon \tilde{\omega'}
 $$
+
 
 où :
 - $\epsilon$ est l'amplitude de la perturbation
-- $\omega'$ est un champ de vorticité aléatoire
+- $\tilde{\omega'}$ est un champ de vorticité aléatoire
 
 ### Paramètres de simulation
 
@@ -118,16 +143,3 @@ où :
     </div>
   </div>
 </details>
-
-### Caractéristiques de l'écoulement
-
-Le tourbillon de Taylor-Green présente plusieurs phases caractéristiques :
-- Une phase initiale où les tourbillons principaux sont clairement définis
-- Une phase de transition où les structures commencent à interagir
-- Une phase de décroissance où l'énergie cinétique se dissipe progressivement
-- Formation de structures plus petites dues aux interactions non-linéaires
-
-Cette configuration est particulièrement utile pour :
-- L'étude de la transition vers la turbulence
-- La validation des schémas numériques
-- L'analyse de la cascade d'énergie

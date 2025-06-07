@@ -76,7 +76,7 @@ MODULE Initialization_Page
         CALL g_signal_connect(button_clear, "clicked"//c_null_char, c_funloc(clear_om_init))
 
         label_shear_layer_thickness = gtk_label_new("Shear layer thickness"//c_null_char)
-        spin_shear_layer_thickness = gtk_spin_button_new(gtk_adjustment_new(0.15d0,0.01d0,1d0,0.005d0,0.5d0,0d0),0.05d0, 7_c_int)
+        spin_shear_layer_thickness = gtk_spin_button_new(gtk_adjustment_new(0.15d0,1.d-5,1d0,0.005d0,0.5d0,0d0),0.05d0, 7_c_int)
 
         label_amplitudes_disturbance = gtk_label_new("Amplitude of the disturbance"//c_null_char)
         spin_amplitudes_disturbance = gtk_spin_button_new(gtk_adjustment_new(0.1d0,0.05d0,10d0,0.05d0,0.5d0,0d0),0.05d0, 7_c_int)
@@ -476,10 +476,21 @@ MODULE Initialization_Page
 
     END SUBROUTINE function_initialization
 
+    subroutine click_cb(gesture, n_press, x, y, gdata) bind(c)
+        type(c_ptr), value, intent(in)    :: gesture, gdata
+        integer(c_int), value, intent(in) :: n_press
+        real(c_double), value, intent(in) :: x, y
+        type(c_ptr) :: widget
+      
+        widget = gtk_event_controller_get_widget(gesture)
+        print *, n_press, " click(s) at ", int(x), int(y)
+  end subroutine click_cb
+
     ! Initialization for the vortex creation part
-    SUBROUTINE init_make_vortex(gesture, x, y, gdata) BIND(c)
+    SUBROUTINE init_make_vortex(gesture, n_press, x, y, gdata) BIND(c)
         TYPE(c_ptr), VALUE, INTENT(IN)    :: gesture, gdata
         REAL(c_double), VALUE, INTENT(IN) :: x, y
+        INTEGER(c_int), VALUE, INTENT(IN) :: n_press
         REAL(dp), DIMENSION(Mesh%Ny, Mesh%Nx) :: om_tmp
         TYPE(c_ptr) :: widget
         REAL(dp) :: A, r0

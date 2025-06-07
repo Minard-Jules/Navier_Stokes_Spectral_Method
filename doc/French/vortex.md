@@ -23,6 +23,7 @@ On doit adimensionner la condition initiale. Pour cela, on introduit les mêmes 
 - $T = L/U$ : temps caractéristique
 
 Les variables adimensionnées sont définies par :
+
 $$
 \begin{aligned}
 \tilde{r} &= \frac{1}{L}r \\[1em]
@@ -38,18 +39,19 @@ Ainsi, la forme adimensionnée de la condition initiale s'écrit :
 $$
 \begin{aligned}
     \begin{cases} 
-        \tilde{r_c} = \sqrt{4 Re^{-1} \tilde{t} + \frac{r_0^2}{L^2}}\\[0.5em]
-        \large \tilde{\omega} = \pm A  e^{-\large \frac{\tilde{r}^2}{\tilde{r_c}^2}} \\[1em]
+        \tilde{r_c} = \sqrt{4 Re^{-1} \tilde{t} + \tilde{r_0}^2}\\ [0.5em]
+        \large \tilde{\omega} = \pm A  e^{-\large \frac{\tilde{r}^2}{\tilde{r_c}^2}} \\ [1em]
         \tilde{r} = \sqrt{(\tilde{x} - \tilde{x_0})^2+(\tilde{y} - \tilde{y_0})^2}
     \end{cases}
 \end{aligned}
 $$
 
-On définit la vitesse caractéristique comme : $U=\frac{\Gamma L}{A \pi r_0^2}$ et la longueur caractéristique : $L=2\pi$. Le nombre de Reynolds s'écrit donc comme : $Re = \frac{UL}{\nu} = \frac{\Gamma}{A \pi \nu}(\frac{L}{r_0})^2$. Le choix du signe permet de déterminer le sens de rotation du tourbillon.
+On définit la vitesse caractéristique comme : $U=\frac{\Gamma}{A \pi \tilde{r_c}^2 L}$ et la longueur caractéristique : $L=2\pi$. Le nombre de Reynolds s'écrit donc : $Re = \frac{UL}{\nu} = \frac{\Gamma}{A \pi \nu \tilde{r_c}^2}$. Le choix du signe permet de déterminer le sens de rotation du tourbillon.
 
 ### Fusion de deux tourbillons co-rotatifs
 
 On initialise la simulation avec deux tourbillons tournant dans le même sens (co-rotatifs), de même intensité $A=10$ et de même taille $\sigma = 0.1$, séparés d'une distance $2R$ avec $R=1$. La simulation est effectuée sur une durée de $30$ secondes à un nombre de Reynolds de 2000.
+
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -58,6 +60,10 @@ On initialise la simulation avec deux tourbillons tournant dans le même sens (c
         </video>
     </div>
 </div>
+
+[![Voir la vidéo](docs/miniature_video1.png)](https://Minard-Jules.github.io/Navier_Stokes_Spectral_Method/#video_2_vortex_vorticity_mag)
+
+[![Voir la vidéo de la vorticité](../image/KH_scheme.png)](../video/2_vortex/vorticity_mag.mp4)
 
 <details>
   <summary>Autres grandeurs physiques</summary>

@@ -22,14 +22,14 @@ MODULE initialization
 
         tolerate = 10*r0
 
-        varx = 1. * x / width
-        vary = 1. * y / height
+        varx = 2*pi * x / width
+        vary = 2*pi * y / height
 
-        x_list = [(i, i = 0, width-1)] * 1. / width
-        y_list = [(i, i = 0, height-1)] * 1. / height
+        x_list = [(i, i = 0, width-1)] * 2*pi / width
+        y_list = [(i, i = 0, height-1)] * 2*pi / height
 
         IF(varx <= tolerate .OR. vary <= tolerate .OR. &
-           1. - varx <= tolerate .OR. 1. - vary <= tolerate)THEN
+           2*pi - varx <= tolerate .OR. 2*pi - vary <= tolerate)THEN
 
             IF(x<width/2)THEN
                 ind_x=INT(width/2-x)
@@ -44,7 +44,7 @@ MODULE initialization
 
             DO i = 1, height
                 DO j = 1, width
-                    om_tmp(i, j) = signe * EXP(-4 * pi**2 * ((x_list(j) - x_list(width-1)/2)**2 + &
+                    om_tmp(i, j) = signe * EXP(-1.d0 * ((x_list(j) - x_list(width-1)/2)**2 + &
                                                               (y_list(i) - y_list(height-1)/2)**2)/r0**2)
                 END DO
             END DO
@@ -55,7 +55,7 @@ MODULE initialization
             om_result = om + om_tmp
         ELSE
             CALL meshgrid(x_list, y_list, X_mesh, Y_mesh)
-            om_result = om + signe * EXP(-4 * pi**2 * ((X_mesh - varx)**2 + (Y_mesh - vary)**2)/r0**2)
+            om_result = om + signe * EXP(-1.d0 * ((X_mesh - varx)**2 + (Y_mesh - vary)**2)/r0**2)
         END IF
 
     END FUNCTION om_init_vortex
@@ -70,13 +70,11 @@ MODULE initialization
         REAL(dp), DIMENSION(height, width) :: om_result
         REAL(dp), DIMENSION(width) :: x_list, random, value_disturbance
         REAL(dp), DIMENSION(height) :: y_list
-        REAL(dp) :: x, y, d_erf, L
+        REAL(dp) :: x, y, d_erf
         INTEGER :: i
 
-        x_list = [(i, i = 0, width-1)] * 1. / width
-        y_list = [(i, i = 0, height-1)] * 1. / height
-        L = 2*pi
-    
+        x_list = [(i, i = 0, width-1)] * 2 * pi / width
+        y_list = [(i, i = 0, height-1)] * 2 * pi / height
 
             DO i = 1, height
 
@@ -87,25 +85,23 @@ MODULE initialization
                     value_disturbance = eps*random
                 END IF
 
-                IF (y_list(i) <= 1./2)THEN
+                IF (y_list(i) <= pi)THEN
 
-                    y = y_list(i) + 1./4
-                    x = (y - 1./2) * L / shear_layer_thickness 
-
-                    d_erf = 2/SQRT(pi) * EXP(-x**2)
-
-                    ! om_result(i,:) = om(i,:) + d_erf * 1/shear_layer_thickness + value_disturbance
-                    om_result(i,:) = om(i,:) + d_erf * L/shear_layer_thickness + value_disturbance
-
-                ELSE IF (y_list(i) >= 1./2)THEN
-
-                    y = y_list(i) - 1./4
-                    x = (y - 1./2) * L / shear_layer_thickness 
+                    y = y_list(i) - pi/2
+                    x = y / shear_layer_thickness
 
                     d_erf = 2/SQRT(pi) * EXP(-x**2)
 
-                    ! om_result(i,:) = om(i,:) - d_erf * 1/shear_layer_thickness + value_disturbance
-                    om_result(i,:) = om(i,:) - d_erf * L/shear_layer_thickness + value_disturbance
+                    om_result(i,:) = om(i,:) + d_erf * 1/shear_layer_thickness + value_disturbance
+
+                ELSE IF (y_list(i) >= pi)THEN
+
+                    y = y_list(i) - 5*pi/4
+                    x = y / shear_layer_thickness 
+
+                    d_erf = 2/SQRT(pi) * EXP(-x**2)
+
+                    om_result(i,:) = om(i,:) - d_erf * 1/shear_layer_thickness + value_disturbance
 
                 END IF
 

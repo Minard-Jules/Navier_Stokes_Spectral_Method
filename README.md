@@ -176,16 +176,7 @@ Les résultats sont automatiquement sauvegardés dans le dossier `data/` avec le
 3. **Erreurs d'affichage**
    - Vérifiez les pilotes graphiques
    - Assurez-vous que GTK est correctement installé -->
-
-## Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas :
-- 🐛 Corrections de bugs
-- ✨ Nouvelles fonctionnalités
-- 📚 Améliorations de la documentation
-- 🎨 Améliorations de l'interface utilisateur
-- ⚡ Optimisations de performance
-
+   
 ## Licence
 
 Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
