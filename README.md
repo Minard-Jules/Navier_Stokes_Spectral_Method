@@ -1,87 +1,85 @@
-# Simulation des équations de Navier-Stokes par Méthode Spectrale
+# Simulation of Navier-Stokes Equations by Spectral Method
 
 ## Introduction
 
-Ce projet implémente une simulation numérique des équations de Navier-Stokes 2D dans la formulation $\omega-\psi$ en utilisant la méthode pseudo spectrale. Cette approche permet une résolution efficace des écoulements fluides dans le domaine spectral (espace de Fourier).
+This project implements a numerical simulation of the 2D Navier-Stokes equations in the $\omega-\psi$ formulation using the pseudo-spectral method. This approach enables efficient resolution of fluid flows in the spectral domain (Fourier space).
 
-### Caractéristiques principales
+### Main Features
 
-- Simulation 2D des équations de Navier-Stokes sous formulation 
-$\omega-\psi$
-- Utilisation de la méthode pseudo-spectrale (Transformées de 
-Fourier avec FFTW)
-- Interface graphique GTK pour le contrôle des paramètres
-- Parallélisation avec OpenMP pour de meilleures performances
-- Visualisation en temps réel des résultats
-- Export des résultats en vidéo via ffmpeg
+- 2D simulation of Navier-Stokes equations in the $\omega-\psi$ formulation
+- Use of the pseudo-spectral method (Fourier Transforms with FFTW)
+- GTK graphical interface for parameter control
+- Parallelization with OpenMP for better performance
+- Real-time visualization of results
+- Export of results to video via ffmpeg
 
-## Formulation Mathématique et Méthode Pseudo-Spectrale
+## Mathematical Formulation and Pseudo-Spectral Method
 
-La démonstration détaillée de la formulation $\omega-\psi$ est disponible dans [docs/French/démonstration_NS.md](docs/French/démonstration_NS.md). Cette formulation transforme les équations de Navier-Stokes en un système couplé plus simple à résoudre numériquement.
+A detailed demonstration of the $\omega-\psi$ formulation is available in [docs/English/demonstration_NS.md](docs/English/demonstration_NS.md). This formulation transforms the Navier-Stokes equations into a coupled system that is simpler to solve numerically.
 
-La méthode pseudo-spectrale combine les avantages des méthodes spectrales et des méthodes dans l'espace physique :
+The pseudo-spectral method combines the advantages of spectral methods and physical space methods:
 
-1. **Transformées de Fourier** : Les dérivées spatiales sont calculées dans l'espace spectral, où elles deviennent de simples multiplications.
-2. **Termes non-linéaires** : Calculés dans l'espace physique pour éviter les convolutions coûteuses.
+1. **Fourier Transforms**: Spatial derivatives are computed in spectral space, where they become simple multiplications.
+2. **Non-linear terms**: Computed in physical space to avoid costly convolutions.
 
-Pour plus de détails sur l'implémentation, consultez [docs/French/methode_pseudo_spectrale.md](docs/French/methode_pseudo_spectrale.md).
+For more details on the implementation, see [docs/English/Pseudo_Spectral_method.md](docs/English/Pseudo_Spectral_method.md).
 
-## Structure du projet
+## Project Structure
 
 ```
 navier-stokes-spectral/
-├── app/                    # Code principale Fortran
-├── src/                    # Code source Fortran
-├── docs/                    # Documentation
-│   ├── French/             # Documentation en français
+├── app/                    # Main Fortran code
+├── src/                    # Fortran source code
+├── docs/                   # Documentation
+│   ├── French/             # Documentation in French
 │   └── English/            # Documentation in English
-├── data/                   # Dossier pour les résultats
-└── fpm.toml                # Configuration du projet
+├── data/                   # Folder for results
+└── fpm.toml                # Project configuration
 ```
 
-## Types d'écoulements simulés
+## Types of Simulated Flows
 
-Le programme permet de simuler trois types d'écoulements classiques en mécanique des fluides :
+The program allows simulation of three classic flow types in fluid mechanics:
 
-### 1. Simulation de tourbillons (ou vortex) co-rotatifs et contra-rotatifs 
+### 1. Co-rotating and Counter-rotating Vortex Simulation 
 
-Cette simulation montre l'interaction de plusieurs tourbillons pouvant tourner dans le même sens (co-rotatif) ou dans le sens contraire (contra-rotatifs). Ce phénomène est particulièrement intéressant en aérodynamique et en météorologie.
+This simulation shows the interaction of several vortices that can rotate in the same direction (co-rotating) or in opposite directions (counter-rotating). This phenomenon is particularly interesting in aerodynamics and meteorology.
 
-[Plus de détails](docs/French/vortex.md)
+[More details](docs/English/vortex.md)
 
-### 2. Instabilité de Kelvin-Helmholtz
+### 2. Kelvin-Helmholtz Instability
 
-Cette instabilité se produit à l'interface entre deux fluides se déplaçant à des vitesses différentes. Elle se manifeste par la formation de tourbillons caractéristiques.
+This instability occurs at the interface between two fluids moving at different speeds. It manifests as the formation of characteristic vortices.
 
-[Plus de détails](docs/French/Kelvin_Helmholtz.md)
+[More details](docs/English/Kelvin_Helmholtz.md)
 
-### 3. Tourbillon de Taylor-Green
+### 3. Taylor-Green Vortex
 
-Ce cas test classique en mécanique des fluides permet d'étudier la transition vers la turbulence.
+This classic test case in fluid mechanics allows the study of the transition to turbulence.
 
-[Plus de détails](docs/French/Taylor_Green.md)
+[More details](docs/English/Taylor_Green.md)
 
-## Prérequis
+## Prerequisites
 
-Les dépendances suivantes sont nécessaires :
+The following dependencies are required:
 
-- [**Compilateur Fortran**](https://fortran-lang.org/fr/compilers/) (gfortran recommandé)
+- [**Fortran Compiler**](https://fortran-lang.org/compilers/) (gfortran recommended)
 - [**GTK**](https://www.gtk.org/) (version 4.x)
-- [**fpm**](https://fpm.fortran-lang.org/) (version 0.9.0 ou supérieure)
+- [**fpm**](https://fpm.fortran-lang.org/) (version 0.9.0 or higher)
 - [**FFTW**](https://www.fftw.org/) (version 3.x)
-- [**ffmpeg**](https://ffmpeg.org/) (pour l'export vidéo)
-- [**OpenMP**](https://www.openmp.org/) (pour la parallélisation)
+- [**ffmpeg**](https://ffmpeg.org/) (for video export)
+- [**OpenMP**](https://www.openmp.org/) (for parallelization)
 
 ## Installation
 
 ### Linux (Debian/Ubuntu)
 
 ```bash
-# Installation des dépendances système
+# Install system dependencies
 sudo apt-get update
 sudo apt-get install gfortran libgtk-3-dev libfftw3-dev ffmpeg libomp-dev
 
-# Installation de fpm
+# Install fpm
 curl -Lo fpm https://github.com/fortran-lang/fpm/releases/download/v0.11.0/fpm-0.11.0-linux-x86_64-gcc-12
 chmod +x fpm
 sudo mv fpm /usr/local/bin
@@ -90,63 +88,63 @@ sudo mv fpm /usr/local/bin
 ### Windows (MSYS2)
 
 ```bash
-# Installation des dépendances
+# Install dependencies
 pacman -Syu
 pacman -S mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gtk3 mingw-w64-x86_64-fftw mingw-w64-x86_64-ffmpeg
 
-# Installation de fpm
+# Install fpm
 pacman -S git mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-fpm
 ```
 
-### macOS (avec Homebrew)
+### macOS (with Homebrew)
 
 ```bash
-# Installation des dépendances
+# Install dependencies
 brew install gcc gtk+3 fftw ffmpeg libomp
 
-# Installation de fpm
+# Install fpm
 brew tap fortran-lang/homebrew-fortran
 brew install fpm
 ```
 
-## Utilisation
+## Usage
 
-### Compilation et exécution
+### Compilation and Execution
 
 ```bash
-# Cloner le dépôt
+# Clone the repository
 git clone https://github.com/Minard-Jules/navier-stokes-spectral
 cd navier-stokes-spectral
 
-# Compiler et exécuter
+# Compile and run
 fpm run
 ```
 
-### Configuration de la simulation
+### Simulation Configuration
 
-1. Ouvrez l'interface graphique
-2. Définissez les paramètres :
-   - Résolution spatiale (Nx, Ny)
-   - Nombre de Reynolds
-   - Pas de temps
-   - Durée de simulation
-3. Sélectionnez le type d'écoulement
-4. Lancez la simulation
+1. Open the graphical interface
+2. Set the parameters :
+   - Spatial resolution (Nx, Ny)
+   - Reynolds number
+   - Time step
+   - Simulation duration
+3. Select the type of flow
+4. Start the simulation
 
-## Visualisation
+## Visualization
 
-### Types de visualisation disponibles
+### Available Visualization Types
 
-- Champs de vitesse
-- Vorticité
-- Fonction de courant
+- Velocity fields
+- Vorticity
+- Stream function
 
-### Options de colormap
+### Colormap Options
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
-        <h3 style="text-align: center;">Colormap Blue Orange (divergent)</h3>
-        <video src="docs/video/2_vortex/vorticity_mag.mp4" width="500" height="500" controls title="Visualisation avec colormap Blue Orange (divergent)"></video>
+        <h3 style="text-align: center;">Blue Orange Colormap (divergent)</h3>
+        <video src="docs/video/2_vortex/vorticity_mag.mp4" width="500" height="500" controls title="Visualization with Blue Orange (divergent) colormap"></video>
     </div>
  </div>
 
@@ -154,23 +152,23 @@ fpm run
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
-        <h3 style="text-align: center;">Colormap 'jet'</h3>
-        <video src="docs/video/2_vortex/vorticity_mag_jet.mp4" width="500" height="500" controls title="Visualisation avec colormap jet"></video>
+        <h3 style="text-align: center;">'jet' Colormap</h3>
+        <video src="docs/video/2_vortex/vorticity_mag_jet.mp4" width="500" height="500" controls title="Visualization with jet colormap"></video>
     </div>
 </div>
 
 https://github.com/user-attachments/assets/4aed022a-e38d-4b91-830b-e7d64ec779b5
 
-### Export des résultats
+### Exporting Results
 
-Les résultats sont automatiquement sauvegardés dans le dossier `data/` avec les formats suivants :
-- Fichiers de données (.vtk)
-- Vidéos (.mp4)
+Results are automatically saved in the `data/` folder in the following formats :
+- Data files (.vtk)
+- Videos (.mp4)
    
-## Licence
+## License
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE.md) pour plus de détails.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
-## Crédits
+## Credits
 
-* [**Minard Jules**](https://github.com/Minard-Jules) : Créateur et mainteneur principal du projet
+* [**Minard Jules**](https://github.com/Minard-Jules): Creator and main maintainer of the project

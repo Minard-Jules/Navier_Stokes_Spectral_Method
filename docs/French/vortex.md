@@ -16,7 +16,7 @@ Avec $\Gamma$ la circulation de l'écoulement, $r$ la coordonnée radiale et $r_
 
 ### Adimensionnement
 
-On doit adimensionner la condition initiale. Pour cela, on introduit les mêmes grandeurs caractéristiques que pour l'[adimensionnement des équations de Navier-Stokes](./démonstration_NS.md#adimensionnement) :
+On doit adimensionner la condition initiale. Pour cela, on introduit les mêmes grandeurs caractéristiques que pour l'[adimensionnement des équations de Navier-Stokes](./demonstration_NS.md#adimensionnement) :
 
 - $L$ : longueur caractéristique
 - $U$ : vitesse caractéristique

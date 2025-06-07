@@ -34,7 +34,7 @@ Pour limiter ces erreurs, on applique généralement un **filtre de dé-aliasing
 
 ## Discrétisation spatiale et temporelle
 
-Dans le cadre des équations de Navier-Stokes en formulation $\omega-\psi$ adimensionnée ([démonstration](démonstration_NS.md)), la méthode pseudo-spectrale est particulièrement adaptée pour résoudre les équations suivantes :
+Dans le cadre des équations de Navier-Stokes en formulation $\omega-\psi$ adimensionnée ([démonstration](demonstration_NS.md)), la méthode pseudo-spectrale est particulièrement adaptée pour résoudre les équations suivantes :
 
 - **Équation de Poisson pour la fonction de courant adimensionnée $\psi$ :**  
   $$
