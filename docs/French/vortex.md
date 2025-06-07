@@ -121,7 +121,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/e8318755-a6eb-42c1-871e-d4fe016f48aa
 
 <details>
     <summary>Autres grandeurs physiques</summary>
@@ -134,7 +134,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/b507bd66-dbef-41b8-a679-c6c6921d8874
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -144,7 +144,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/5139d689-f107-486a-9785-092694d22da4
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -154,7 +154,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/f9b37764-c4fe-4e0e-b063-c08fecbf9803
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -164,7 +164,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) avec 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/8995cb6d-4412-49bc-8902-060bb2b5aeaf
 
 </details>
 
@@ -180,7 +180,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/518da9a2-02a8-4436-aa48-15aa9a99c173
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -189,6 +189,8 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
         </video>
     </div>
 </div>
+
+https://github.com/user-attachments/assets/74193688-72c5-4da1-81d5-edad92c03d0d
 
 <details>
     <summary>Autres grandeurs physiques</summary>
@@ -201,7 +203,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/51df923a-b861-44ae-a968-7a1a2ac17158
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>   
@@ -211,7 +213,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/64973193-9ed2-4aa4-ba01-a61d166a6ad6
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -221,7 +223,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/0722d9d0-e948-4220-8dee-7f806f9b3e24
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -231,7 +233,7 @@ On réalise la même [simulation](#fusion-de-deux-tourbillons-co-rotatifs) mais 
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/55569f5d-5f48-4c61-9921-d81f07903447
 
 </details>
 
@@ -247,7 +249,7 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/ac9258fe-ded0-468f-8c12-220b29c34387
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -256,6 +258,8 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
         </video>
     </div>
 </div>
+
+https://github.com/user-attachments/assets/11e09993-22ee-4197-83d2-8fe4ed89fd4b
 
 <details>
     <summary>Autres grandeurs physiques</summary>
@@ -268,7 +272,7 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/896df8f9-652b-4698-b6a1-543c98b8fb80
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -278,7 +282,7 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/07e60647-ff29-4486-b237-487c61d0cf81
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -288,7 +292,7 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/f0f91214-aa88-493a-966a-b9442727dd3c
 
 <div style="display: flex; justify-content: space-around; margin: 20px 0;">
     <div>
@@ -298,6 +302,6 @@ On peut également simuler la collision de deux [dipôles](#dipole-tourbillonnai
     </div>
 </div>
 
-
+https://github.com/user-attachments/assets/84b8291f-2a12-44c7-a334-434d7507727d
 
 </details>
