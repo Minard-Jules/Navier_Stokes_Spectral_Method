@@ -4,6 +4,8 @@
 
 This project implements a numerical simulation of the 2D Navier-Stokes equations in the $\omega-\psi$ formulation using the pseudo-spectral method. This approach enables efficient resolution of fluid flows in the spectral domain (Fourier space).
 
+[Fr](docs/French/README.md) En
+
 ### Main Features
 
 - 2D simulation of Navier-Stokes equations in the $\omega-\psi$ formulation
