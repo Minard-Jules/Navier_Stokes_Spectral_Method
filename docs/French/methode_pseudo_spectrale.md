@@ -9,19 +9,22 @@ La méthode pseudo-spectrale repose sur l'idée de représenter les solutions de
 ### Étapes principales
 
 1. **Transformation vers l'espace spectral**  
-   Les variables du problème sont projetées sur une base spectrale à l'aide, par exemple, de la transformée de Fourier. Pour une fonction $s(x)$ périodique, on utilise une série de Fourier :  
-   $$
+   Les variables du problème sont projetées sur une base spectrale à l'aide, par exemple, de la transformée de Fourier. Pour une fonction $s(x)$ périodique, on utilise une série de Fourier :
+   
+$$
    s(x) = \sum_{k=-N/2}^{N/2} \hat{s}_k e^{i k x}
-   $$
+$$
+   
    où $\hat{s}_k$ sont les coefficients spectraux.
 
-2. **Résolution dans l'espace spectral**  
-   Les dérivées spatiales sont calculées directement dans l'espace spectral grâce aux propriétés des fonctions de base. Par exemple, la dérivée d'une fonction $s(x)$ dans l'espace spectral est donnée par :  
-   $$
+3. **Résolution dans l'espace spectral**  
+   Les dérivées spatiales sont calculées directement dans l'espace spectral grâce aux propriétés des fonctions de base. Par exemple, la dérivée d'une fonction $s(x)$ dans l'espace spectral est donnée par :
+   
+$$
    \frac{\partial s}{\partial x} \longrightarrow i k \hat{s}_k
-   $$
+$$
 
-3. **Retour à l'espace physique pour les non-linéarités**  
+5. **Retour à l'espace physique pour les non-linéarités**  
    Les termes non-linéaires, comme $s \frac{\partial s}{\partial x}$, sont calculés dans l'espace physique. Cela nécessite une transformée inverse pour revenir à l'espace physique, suivie d'une nouvelle transformée pour retourner à l'espace spectral.
 
 ### Gestion de l’aliasing
@@ -36,17 +39,20 @@ Pour limiter ces erreurs, on applique généralement un **filtre de dé-aliasing
 
 Dans le cadre des équations de Navier-Stokes en formulation $\omega-\psi$ adimensionnée ([démonstration](demonstration_NS.md)), la méthode pseudo-spectrale est particulièrement adaptée pour résoudre les équations suivantes :
 
-- **Équation de Poisson pour la fonction de courant adimensionnée $\psi$ :**  
-  $$
+- **Équation de Poisson pour la fonction de courant adimensionnée $\psi$ :**
+  
+$$
   \Delta \psi = -\omega
-  $$
+$$
 
-- **Équation de transport pour la vorticité adimensionnée $\omega$ :**  
-  $$
+- **Équation de transport pour la vorticité adimensionnée $\omega$ :**
+  
+$$
   \frac{\partial \omega}{\partial t} = \underbrace{ - \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} + \frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y}}_{\textit{NL}} + Re^{-1} \Delta \omega
-  $$
+$$
 
 On peut décomposer nos grandeurs de vorticité et de fonction de courant dans l’espace de Fourier pour un domaine périodique 2D :
+
 $$
 \begin{align*} 
    \omega(x,y,t) = \sum_{k_x \in \mathcal{K}}  \sum_{k_y  \in \mathcal{K}}   \widehat{\omega}_{k_x,k_y} (t) \, e^{i (k_x x + k_y y)} \\ 
@@ -61,6 +67,7 @@ $$
 $$
 
 En prenant la transformée de Fourier de ces équations, on obtient :
+
 $$
 \begin{aligned}
    \begin{cases} 
