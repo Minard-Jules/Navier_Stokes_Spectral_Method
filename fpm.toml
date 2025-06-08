@@ -1,9 +1,9 @@
 name = "Navier_Stokes_Spectral_Method"
 version = "0.1.0"
-license = "license"
+license = "MIT"
 author = "Jules Minard"
 maintainer = "minard.jules@yahoo.com"
-copyright = "Copyright 2023, Jules Minard"
+copyright = "Copyright 2023-2025, Jules Minard"
 
 [build]
 auto-executables = true
