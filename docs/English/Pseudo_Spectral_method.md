@@ -9,19 +9,22 @@ The pseudo-spectral method is based on representing the solutions of PDEs as ser
 ### Main Steps
 
 1. **Transformation to Spectral Space**  
-   The problem variables are projected onto a spectral basis using, for example, the Fourier transform. For a periodic function $s(x)$, a Fourier series is used:  
-   $$
+   The problem variables are projected onto a spectral basis using, for example, the Fourier transform. For a periodic function $s(x)$, a Fourier series is used:
+   
+$$
    s(x) = \sum_{k=-N/2}^{N/2} \hat{s}_k e^{i k x}
-   $$
+$$
+
    where $\hat{s}_k$ are the spectral coefficients.
 
-2. **Solving in Spectral Space**  
-   Spatial derivatives are computed directly in spectral space thanks to the properties of the basis functions. For example, the derivative of a function $s(x)$ in spectral space is given by:  
-   $$
+3. **Solving in Spectral Space**  
+   Spatial derivatives are computed directly in spectral space thanks to the properties of the basis functions. For example, the derivative of a function $s(x)$ in spectral space is given by:
+   
+$$
    \frac{\partial s}{\partial x} \longrightarrow i k \hat{s}_k
-   $$
+$$
 
-3. **Return to Physical Space for Nonlinearities**  
+5. **Return to Physical Space for Nonlinearities**  
    Nonlinear terms, such as $s \frac{\partial s}{\partial x}$, are computed in physical space. This requires an inverse transform to return to physical space, followed by a new transform to return to spectral space.
 
 ### Aliasing Management
@@ -36,17 +39,20 @@ To limit these errors, a **de-aliasing filter** is generally applied (for exampl
 
 In the context of the dimensionless $\omega-\psi$ formulation of the Navier-Stokes equations ([demonstration](demonstration_NS.md)), the pseudo-spectral method is particularly well-suited to solve the following equations:
 
-- **Poisson equation for the dimensionless stream function $\psi$:**  
-  $$
-  \Delta \psi = -\omega
-  $$
+- **Poisson equation for the dimensionless stream function $\psi$:**
+  
+$$
+   \Delta \psi = -\omega
+$$
 
-- **Transport equation for the dimensionless vorticity $\omega$:**  
-  $$
+- **Transport equation for the dimensionless vorticity $\omega$:**
+  
+$$
   \frac{\partial \omega}{\partial t} = \underbrace{ - \frac{\partial \psi}{\partial y} \frac{\partial \omega}{\partial x} + \frac{\partial \psi}{\partial x} \frac{\partial \omega}{\partial y}}_{\textit{NL}} + Re^{-1} \Delta \omega
-  $$
+$$
 
 We can decompose our vorticity and stream function quantities in Fourier space for a 2D periodic domain:
+
 $$
 \begin{align*} 
    \omega(x,y,t) = \sum_{k_x \in \mathcal{K}}  \sum_{k_y  \in \mathcal{K}}   \widehat{\omega}_{k_x,k_y} (t) \, e^{i (k_x x + k_y y)} \\ 
@@ -61,6 +67,7 @@ $$
 $$
 
 Taking the Fourier transform of these equations, we obtain:
+
 $$
 \begin{aligned}
    \begin{cases} 
