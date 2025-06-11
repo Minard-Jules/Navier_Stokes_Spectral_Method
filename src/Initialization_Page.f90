@@ -4,7 +4,6 @@ MODULE Initialization_Page
     USE Fields_Module
     USE initialization
     USE Simulation_Page
-    USE Fields_Module
 
     IMPLICIT NONE
 
