@@ -1,4 +1,4 @@
-# Simulation of Navier-Stokes Equations by Spectral Method
+# Simulation of Navier-Stokes Equations by Pseudo-Spectral Method
 
 ## Introduction
 
