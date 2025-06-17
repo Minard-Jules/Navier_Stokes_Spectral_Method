@@ -6,7 +6,14 @@ project(NavierStokesSpectralMethod LANGUAGES Fortran)
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/mod)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -O2")
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -O2 -cpp")
+
+# add definitions for different operating systems
+if(WIN32)
+    add_definitions(-D_WIN32)
+elseif(UNIX)
+    add_definitions(-D_UNIX)
+endif()
 
 include(FetchContent)
 
@@ -23,7 +30,7 @@ FetchContent_MakeAvailable(NAFPack)
 FetchContent_Declare(
   gtk-fortran
   GIT_REPOSITORY https://github.com/vmagnin/gtk-fortran.git
-  GIT_TAG        gtk4
+  GIT_TAG        gtk4-vmagnin
 )
 FetchContent_MakeAvailable(gtk-fortran)
 

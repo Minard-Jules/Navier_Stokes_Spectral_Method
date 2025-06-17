@@ -11,6 +11,7 @@ auto-tests = true
 auto-examples = true
 module-naming = false
 
+
 [install]
 library = false
 
@@ -18,6 +19,11 @@ library = false
 implicit-typing = false
 implicit-external = false
 source-form = "free"
+
+[preprocess]
+cpp.directories = ["src/IO_Module.f90"]
+# cpp.macros=["_WIN32"]
+# cpp.macros=["_UNIX"]
 
 [dependencies]
 gtk-fortran = { git = "https://github.com/vmagnin/gtk-fortran.git", rev = "v4.6.0" }

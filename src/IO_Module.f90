@@ -5,14 +5,53 @@ MODULE IO_Module
     IMPLICIT NONE
 
     ! Declaration of the Windows API functions
+#ifdef _WIN32
     INTERFACE
         INTEGER (kind=4) FUNCTION GetSystemMetrics(nIndex) BIND(C,name='GetSystemMetrics')
             USE iso_c_binding
             INTEGER (c_int), VALUE :: nIndex
         END FUNCTION GetSystemMetrics
     END INTERFACE
+#endif
 
     CONTAINS
+
+#ifdef _UNIX
+
+    FUNCTION GetSystemMetrics() RESULT(screen_size_output)
+        TYPE(screen_size_type) :: screen_size_output
+        integer :: status
+        character(len=256) :: command
+        integer :: width, height
+        integer :: xpos
+
+
+        ! execute xrandr and redirect to a temporary file
+        command = 'xrandr | grep "\*" | cut -d" " -f4 > screen_size.txt'
+        status = system(trim(command))
+
+        if (status == 0) then
+            open(unit=10, file='screen_size.txt', status='old')
+            read(10, '(A)') command
+            close(10)
+
+            ! Find the position of the 'x' character
+            xpos = index(command, "x")
+
+            if (xpos > 1) then
+                read(command(1:xpos-1), *) screen_size_output%width
+                read(command(xpos+1:), *) screen_size_output%height
+            else
+                print *, "Error: invalid resolution format."
+            end if
+        else
+            print *, "Error during xrandr execution"
+        end if
+
+        CALL execute_command_line("rm -rf screen_size.txt")
+    END FUNCTION GetSystemMetrics
+#endif
+
 
     ! Save the fields in a VTK file
     SUBROUTINE save_VTK(n, file)
@@ -164,30 +203,35 @@ MODULE IO_Module
 
     ! Determine the screen size
     SUBROUTINE get_screen_size
-
         INTEGER, PARAMETER :: SM_CXSCREEN = 0
         INTEGER, PARAMETER :: SM_CYSCREEN = 1
         INTEGER :: status
         CHARACTER(len=100) :: command
 
-
         IF(OS%Windows)THEN
             ! Call Windows API functions to get screen resolution
+#ifdef _WIN32
             screen_size%width = GetSystemMetrics(SM_CXSCREEN)
             screen_size%height = GetSystemMetrics(SM_CYSCREEN)
+#endif
+            IF (screen_size%width <= 0 .OR. screen_size%height <= 0) THEN
+                ! Default values if the reading fails
+                screen_size%width = 1920
+                screen_size%height = 1080
+                PRINT *, "Warning: Unable to get screen resolution. Using default values."
+            END IF
         ELSE IF (OS%Linux)THEN
-            ! Command to get screen resolution in Linux
-            command = 'xdpyinfo | grep dimensions | awk ''{print $2}'' | awk -Fx ''{print $1, $2}'''
+
+#ifdef _UNIX
+            screen_size = GetSystemMetrics()
+#endif
             
-            ! Execute the command and capture output
-            CALL execute_command_line(command, exitstat=status)
-            
-            ! Check if command executed successfully
-            IF (status /= 0) then
-                print *, "Error: Unable to get screen resolution."
-            ELSE
-                ! Read width and height from command output
-                !READ(*, '(I5, I5)') screen_size%width, screen_size%height
+            ! Check if the reading was successful
+            IF (status /= 0 .OR. screen_size%width <= 0 .OR. screen_size%height <= 0) THEN
+                ! Default values if the reading fails
+                screen_size%width = 1920
+                screen_size%height = 1080
+                PRINT *, "Warning: Unable to get screen resolution. Using default values."
             END IF
         END IF
 
