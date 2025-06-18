@@ -30,7 +30,7 @@ FetchContent_MakeAvailable(NAFPack)
 FetchContent_Declare(
   gtk-fortran
   GIT_REPOSITORY https://github.com/vmagnin/gtk-fortran.git
-  GIT_TAG        gtk4-vmagnin
+  GIT_TAG        gtk4
 )
 FetchContent_MakeAvailable(gtk-fortran)
 

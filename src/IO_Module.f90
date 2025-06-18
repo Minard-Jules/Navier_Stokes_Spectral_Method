@@ -152,16 +152,16 @@ MODULE IO_Module
            PRESENT(value_cpu_time_step))THEN
 
             WRITE(string_part, '(I4)') value_steps
-            string_part = " "//ADJUSTL(string_part)
+            string_part = " "//TRIM(ADJUSTL(string_part))
 
             WRITE(string_time, '(F10.5)') value_time
-            string_time = ADJUSTL(string_time)
+            string_time = TRIM(ADJUSTL(string_time))
 
             WRITE(string_cpu_time_total, '(F10.5)') value_cpu_time_total
-            string_cpu_time_total = ADJUSTL(string_cpu_time_total)
+            string_cpu_time_total = TRIM(ADJUSTL(string_cpu_time_total))
 
             WRITE(string_cpu_time_step, '(F10.5)') value_cpu_time_step
-            string_cpu_time_step = ADJUSTL(string_cpu_time_step)
+            string_cpu_time_step = TRIM(ADJUSTL(string_cpu_time_step))
 
             PRINT "(A, A, A, A)", string_part, string_time, string_cpu_time_total, string_cpu_time_step
         ELSE
@@ -206,7 +206,6 @@ MODULE IO_Module
         INTEGER, PARAMETER :: SM_CXSCREEN = 0
         INTEGER, PARAMETER :: SM_CYSCREEN = 1
         INTEGER :: status
-        CHARACTER(len=100) :: command
 
         IF(OS%Windows)THEN
             ! Call Windows API functions to get screen resolution
