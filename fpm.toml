@@ -26,6 +26,6 @@ cpp.directories = ["src/IO_Module.f90"]
 # cpp.macros=["_UNIX"]
 
 [dependencies]
-gtk-fortran = { git = "https://github.com/vmagnin/gtk-fortran.git", rev = "v4.6.0" }
-NAFPack = {git = "https://github.com/Minard-Jules/NAFPack.git"}
+gtk-fortran = { git = "https://github.com/vmagnin/gtk-fortran.git", rev = "v4.9.0" }
+NAFPack = { git = "https://github.com/Minard-Jules/NAFPack.git", branch = "stable-refacto" }
 openmp = "*"

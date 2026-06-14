@@ -109,6 +109,14 @@ brew tap fortran-lang/homebrew-fortran
 brew install fpm
 ```
 
+### conda 
+
+```bash
+conda create -n Navier_Stokes_Spectral_Method_env -c conda-forge gfortran=15.2.0 cmake=4.3.3 fpm=0.13.0 gtk4=4.22.4 cairo=1.18.4 pango=1.56.4 glib=2.88.1 pkg-config=0.29.2 lapack=3.11.0 blas=2.308 fftw=3.3.11
+
+conda activate Navier_Stokes_Spectral_Method_env
+```
+
 ## Usage
 
 ### Compilation and Execution
